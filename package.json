@@ -1,0 +1,67 @@
+{
+  "name": "react-shihab-icons",
+  "version": "0.0.1",
+  "description": "Shihab icons for react and figma",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alaa-sufi/react-shihab-icons.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "gen": "node ./scripts/build.js",
+    "preBuild": "rmdir /s /q dist.",
+    "build:bundle": "rollup --config rollup.config.js  --bundleConfigAsCjs ",
+    "build": "npm run preBuild && npm run build:bundle"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "[icons",
+    "react",
+    "icon",
+    "components",
+    "shihab"
+  ],
+  "author": "Alaa sufi <alaasufi227@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alaa-sufi/react-shihab-icons/issues"
+  },
+  "homepage": "https://github.com/alaa-sufi/react-shihab-icons#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.15.6",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.22.15",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.1",
+    "@types/react": "^17.0.22",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "react": "^17.0.2",
+    "rollup": "^3.29.4",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-filesize": "^10.0.0",
+    "rollup-plugin-multi-input": "^1.3.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "package": "^1.0.1",
+    "path": "^0.12.7",
+    "prettier-eslint": "^13.0.0",
+    "prop-types": "^15.7.2"
+  }
+}

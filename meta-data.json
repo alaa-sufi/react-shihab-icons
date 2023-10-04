@@ -1,0 +1,26 @@
+{
+    "variants": [
+        "Line",
+        "TwoTone"
+    ],
+    "categories": [
+        {
+            "name": "ads",
+            "icons": [
+                "AnnouncementIcon",
+                "BookmarkIcon",
+                "BookmarksIcon",
+                "HeartIcon",
+                "Label1Icon",
+                "Label2Icon",
+                "LampIcon",
+                "Megaphone1Icon",
+                "Megaphone2Icon",
+                "StarAiIcon",
+                "Star1Icon",
+                "Trophy1Icon",
+                "Trophy2Icon"
+            ]
+        }
+    ]
+}
