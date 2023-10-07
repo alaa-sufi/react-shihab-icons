@@ -126,9 +126,8 @@ const react = async (icons) => {
         );
         return { variant, svgFile };
       });
-      console.log("iconsAllVariant: ", iconsAllVariant);
 
-      let ComponentName = cc(icon.replace(".svg", ""), { pascalCase: true }) +"Icon";
+      let ComponentName = cc(icon.replace(".svg", ""), { pascalCase: true }) + "Icon";
 
       if (ComponentName.match(/^\d/)) {
         ComponentName = "I" + ComponentName;

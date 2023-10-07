@@ -2,11 +2,15 @@ import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import copy from "rollup-plugin-copy";
-
-// import multiInput from "rollup-plugin-multi-input";
 import external from "rollup-plugin-peer-deps-external";
-import metaTags from './meta-data.json'
-const input = metaTags.categories[0].icons.map(item=>`src/${item}.js`);
+import metaTags from "./meta-data.json";
+
+// const input = metaTags.categories[0].icons.map(item => `src/${item}.js`);
+const input = metaTags.categories
+  .map((item) => [...item.icons])
+  .join(",")
+  .split(",")
+  .map((item) => `src/${item}.js`);
 
 const output = [
   {
@@ -23,25 +27,24 @@ const output = [
   },
 ];
 
-const plugins = [];
-plugins.push(
+const plugins = [
   babel({
     babelHelpers: "bundled",
     exclude: "node_modules/**",
-  })
-);
-// plugins.push(multiInput());
-plugins.push(external());
-plugins.push(resolve());
-plugins.push(commonjs());
-plugins.push(
+  }),
+  external(),
+  resolve(),
+  commonjs(),
   copy({
     targets: [
       { src: "./src/index.d.ts", dest: "dist" },
       { src: "./meta-data.json", dest: "dist" },
+      { src: "./index.js", dest: "dist/cjs" },
+      { src: "./index.js", dest: "dist/esm" },
     ],
-  })
-);
+  }),
+];
+
 export default {
   input,
   output,

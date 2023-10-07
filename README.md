@@ -10,7 +10,7 @@
 <br>
 <br>
 
-> ©️ shihab-icons [github](https://github.com/alaa-sufi/shihab-icons) and
+> ©️ shihab-icons [github](https://github.com/alaa-sufi/react-shihab-icons) and
 > [official website](https://shihab-icons.vercel.app/) (other format and platform available)
 
 ## Installation
@@ -18,9 +18,9 @@
 ### React
 
 ```bash
-yarn add react-shihab-icons
+yarn add shihab-react-icons
 # or
-npm i react-shihab-icons
+npm i shihab-react-icons
 ```
 
 ````
@@ -29,27 +29,27 @@ npm i react-shihab-icons
 
 ```jsx
 import React from 'react';
-import { Home1 } from 'react-shihab-icons';
+import { Home1Icon } from 'shihab-react-icons';
 
 const Example = () => {
   // then use it as a normal React Component
-  return <Home1 />;
+  return <Home1Icon />;
 };
 ````
 
 You can configure Icons with inline props:
 
 ```jsx
-<Home1 color="#eee" variant="Bulk" size={54} />
+<Home1Icon color="#eee" variant="Line" size={54} />
 ```
 
 ## Props
 
-| Prop      | Type                                                | Default        | Note                   |
-| --------- | --------------------------------------------------- | -------------- | ---------------------- |
-| `color`   | `string`                                            | `currentColor` | css color              |
-| `size`    | `number` `string`                                   | 24px           | size={24} or size="24" |
-| `variant` | `line` `tw-tone`                                    | `line`         | icons styles           |
+| Prop      | Type              | Default        | Note                   |
+| --------- | ----------------- | -------------- | ---------------------- |
+| `color`   | `string`          | `currentColor` | css color              |
+| `size`    | `number` `string` | 24px           | size={24} or size="24" |
+| `variant` | `Line` `TwoTone`  | `Line`         | icons styles           |
 
 ---
 

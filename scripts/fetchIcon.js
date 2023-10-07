@@ -15,11 +15,9 @@ const fetchIcon = async () => {
   
   const _categories = readdirSync(categoriesDir);
   const categories = _categories.map((x) => {
-    const icons = readdirSync(path.join(categoriesDir, x));
+    const icons = readdirSync(path.join(categoriesDir, x)) ;
     return { name: x, icons };
   });
   return { variants, categories };
 };
-
-console.log('fetchIcon: ', fetchIcon);
 module.exports = fetchIcon;
