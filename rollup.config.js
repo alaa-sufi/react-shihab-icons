@@ -39,8 +39,6 @@ const plugins = [
     targets: [
       { src: "./src/index.d.ts", dest: "dist" },
       { src: "./meta-data.json", dest: "dist" },
-      { src: "./index.js", dest: "dist/cjs" },
-      { src: "./index.js", dest: "dist/esm" },
     ],
   }),
 ];
