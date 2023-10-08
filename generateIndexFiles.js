@@ -1,6 +1,6 @@
 const path = require("path");
 const fs = require("fs");
-const metaTags = require("../meta-data.json");
+const metaTags = require("./meta-data.json");
 
 const { readdirSync } = fs;
 const input = metaTags.categories
@@ -78,4 +78,4 @@ require('prop-types');`;
   );
 };
 
-module.exports = generateIndexFiles;
+generateIndexFiles()

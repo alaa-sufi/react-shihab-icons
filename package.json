@@ -1,6 +1,6 @@
 {
   "name": "shihab-react-icons",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Shihab icons for react and figma",
   "author": "Alaa sufi <alaasufi227@gmail.com>",
   "homepage": "https://github.com/alaa-sufi/react-shihab-icons#readme",
@@ -23,7 +23,7 @@
     "gen": "node ./scripts/build.js",
     "preBuild": "rmdir /s /q dist.",
     "build:bundle": "rollup --config rollup.config.js  --bundleConfigAsCjs ",
-    "buildIndex": "node ./scripts/generateIndexFiles.js",
+    "buildIndex": "node ./generateIndexFiles.js",
     "build": "npm run preBuild && npm run build:bundle && npm run buildIndex"
   },
   "keywords": [
