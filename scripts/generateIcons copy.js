@@ -11,9 +11,9 @@ const cc = require("camelcase");
 const { log } = require("console");
 
 // Paths
-const rootDir = path.resolve();
-const IconsDir = path.join(rootDir, "icons");
-const packageDir = path.join(rootDir, "packages");
+// const rootDir = path.resolve();
+// const IconsDir = path.join(rootDir, 'icons');
+// const packageDir = path.join(rootDir);
 
 // format files before write
 const format = (text) =>
@@ -34,8 +34,7 @@ const convertAttrsToReactAttrs = (obj) => {
   const keyValues = Object.keys(obj).map((key) => {
     const newKey = cc(key);
     let newValue = obj[key];
-    if (newValue.match(/^(#292D32|#17191C|#000|#222222|black)$/))
-      newValue = "%%{color}%%";
+    if (newValue.match(/^(#292D32|#17191C|#000|#222222|black)$/)) newValue = "%%{color}%%";
     if (newKey.match(/^(width|height)$/) && newValue.match("24"))
       newValue = "%%{size}%%";
 
@@ -73,7 +72,7 @@ const loopAllVariant = (iconsAllVariant, isNative) => {
   const loop = iconsAllVariant.map((iav) => {
     return `const ${
       iav.variant
-    } = ({color}) => (<>${convertElementInsideSvgToReactElement(
+    } = ({color = 'currentColor'}) => (<>${convertElementInsideSvgToReactElement(
       iav.svgFile,
       isNative
     )}</>)`;
@@ -81,23 +80,26 @@ const loopAllVariant = (iconsAllVariant, isNative) => {
   return loop.join("\n\n");
 };
 
-const switchStatementForVariants = () => {
+const switchStatementForVariants = (iconsAllVariant) => {
+  const cases = iconsAllVariant.map(
+    (iav) => `
+  case '${iav.variant}':
+    return <${iav.variant} color={color} />
+    `
+  );
   return `const chooseVariant = (variant, color) => {
-    if (variant === "TwoTone") {
-      return /*#__PURE__*/ React.createElement(TowTone, {
-        color: color,
-      });
+    switch (variant) {
+      ${cases.join("")}
+        default:
+        return <Line color={color} />
     }
-    return /*#__PURE__*/React.createElement(Line, {
-            color: color
-          });
   };`;
 };
 
 const initialTypeDefinitions = `/// <reference types="react" />
 import { FC, SVGAttributes, Ref } from 'react';
 export interface IconProps extends SVGAttributes<SVGElement> {
-  variant?: 'Line' | 'TwoTone';
+  variant?: 'Line' | 'TwoTone' ;
   ref?: Ref<SVGSVGElement>;
   color?: string;
   size?: string | number;
@@ -114,18 +116,18 @@ const react = async (icons) => {
     format(initialTypeDefinitions),
     "utf-8"
   );
+  console.log("----- start loop category");
 
   icons.categories.forEach(async (category) => {
     category.icons.forEach(async (icon) => {
       const iconsAllVariant = icons.variants.map((variant) => {
         const svgFile = readFileSync(
-          path.join(IconsDir, variant, category.name, icon)
+          path.join("icons", variant, category.name, icon)
         );
         return { variant, svgFile };
       });
 
-      let ComponentName =
-        cc(icon.replace(".svg", ""), { pascalCase: true }) + "Icon";
+      let ComponentName = cc(icon.replace(".svg", ""), { pascalCase: true }) + "Icon";
 
       if (ComponentName.match(/^\d/)) {
         ComponentName = "I" + ComponentName;
@@ -133,11 +135,10 @@ const react = async (icons) => {
       const element = `
        import React, {forwardRef} from 'react';
        import PropTypes from 'prop-types';
-       
 
        ${loopAllVariant(iconsAllVariant)}
 
-       ${switchStatementForVariants()}
+       ${switchStatementForVariants(iconsAllVariant)}
 
        const ${ComponentName} =
        forwardRef(({ variant , color, size , ...rest }, ref) => {
@@ -185,18 +186,6 @@ const react = async (icons) => {
     });
   });
 };
-const nativeInitialTypeDefinitions = `/// <reference types="react" />
-import { FC, Component, Ref } from 'react';
-import { SvgProps } from 'react-native-svg';
-
-export interface IconProps extends SvgProps {
-  variant?: 'Line' | 'TwoTone';
-  ref?: Ref<Component<SvgProps>>;
-  color?: string;
-  size?: string | number;
-}
-export type Icon = FC<IconProps>;
-`;
 
 const generateIcons = {
   react,
