@@ -8,7 +8,6 @@ const generateIcons = require('./generateIcons');
 // Paths
 const rootDir = path.resolve();
 const IconsDir = path.join(rootDir, 'icons');
-const packages = ['react'];
 
 const space = () => console.log('-----------------------------');
 const main = async () => {
@@ -20,11 +19,10 @@ const main = async () => {
     console.log(icons);
 
     space();
-    packages.forEach(async (p) => {
       const srPath = path.join(rootDir,  'src');
 
       // 2. generating meta-data file
-      console.log(`----- generating meta-data file -> ${p}`);
+      console.log(`----- generating meta-data file ->`);
       const categories = icons.categories.map((cat) => {
         const icons = cat.icons.map((i) => {
           if (i.match(/^\d/)) {
@@ -40,7 +38,7 @@ const main = async () => {
       );
 
       // 3. cleaning old icons
-      console.log(`----- cleaning old icons -> ${p}`);
+      console.log(`----- cleaning old icons ->`);
 
       // const isDirectory = stat.isDirectory();
       const exist = existsSync(srPath);
@@ -54,8 +52,8 @@ const main = async () => {
 
       // 4. generating icons
       // await generateIcons['react-native'](icons);
-      await generateIcons[p](icons);
-    });
+      await generateIcons['react'](icons);
+    
   } catch (err) {
     throw new Error(err.message);
   }

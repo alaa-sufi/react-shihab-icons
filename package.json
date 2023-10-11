@@ -1,6 +1,6 @@
 {
   "name": "shihab-react-icons",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Shihab icons for react and figma",
   "author": "Alaa sufi <alaasufi227@gmail.com>",
   "homepage": "https://github.com/alaa-sufi/react-shihab-icons#readme",
@@ -63,6 +63,7 @@
     "cheerio": "^1.0.0-rc.12",
     "path": "^0.12.7",
     "prettier-eslint": "^13.0.0",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "xml2js": "^0.6.2"
   }
 }

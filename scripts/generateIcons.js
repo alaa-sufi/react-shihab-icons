@@ -43,10 +43,9 @@ const convertAttrsToReactAttrs = (obj) => {
   });
   return Object.assign({}, ...keyValues);
 };
-const reactiveChildren = (children, isNative) => {
+const reactiveChildren = (children) => {
   if (!children.length > 0) return;
   const newChidlren = children.map((c) => {
-    if (isNative && c.name) c.name = c.name[0].toUpperCase() + c.name.slice(1);
     if (!c.attribs) return c;
     const attribs = convertAttrsToReactAttrs(c.attribs);
     return { ...c, attribs };
@@ -54,28 +53,25 @@ const reactiveChildren = (children, isNative) => {
 
   return newChidlren;
 };
-const convertElementInsideSvgToReactElement = (svgFile, isNative) => {
+const convertElementInsideSvgToReactElement = (svgFile) => {
   const $ = cheerio.load(svgFile);
   const elem = $("svg > *");
   elem.each((_, element) => {
-    if (isNative)
-      element.name = element.name[0].toUpperCase() + element.name.slice(1);
     const attrs = convertAttrsToReactAttrs(element.attribs);
     element.attribs = attrs;
-    const newc = reactiveChildren(element.children, isNative);
+    const newc = reactiveChildren(element.children);
     if (newc) element.children = newc;
   });
   const final = elem.toString().replace(/"?%%"?/g, "");
   return final;
 };
 
-const loopAllVariant = (iconsAllVariant, isNative) => {
+const loopAllVariant = (iconsAllVariant) => {
   const loop = iconsAllVariant.map((iav) => {
     return `const ${
       iav.variant
     } = ({color}) => (<>${convertElementInsideSvgToReactElement(
       iav.svgFile,
-      isNative
     )}</>)`;
   });
   return loop.join("\n\n");
@@ -185,18 +181,7 @@ const react = async (icons) => {
     });
   });
 };
-const nativeInitialTypeDefinitions = `/// <reference types="react" />
-import { FC, Component, Ref } from 'react';
-import { SvgProps } from 'react-native-svg';
 
-export interface IconProps extends SvgProps {
-  variant?: 'Line' | 'TwoTone';
-  ref?: Ref<Component<SvgProps>>;
-  color?: string;
-  size?: string | number;
-}
-export type Icon = FC<IconProps>;
-`;
 
 const generateIcons = {
   react,

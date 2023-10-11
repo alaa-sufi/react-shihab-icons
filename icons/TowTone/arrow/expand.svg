@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M15.0553 18.6409L12.8783 20.8179L10.7014 18.6409" stroke="#222222" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
-<path opacity="0.4" d="M12.8784 15.2794V20.8179" stroke="#222222" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M10.7014 6.99479L12.8783 4.81787L15.0553 6.99479" stroke="#222222" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
-<path opacity="0.4" d="M12.8784 10.3563V4.81787" stroke="#222222" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M7.05534 14.9948L4.87842 12.8179L7.05534 10.6409" stroke="#222222" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
-<path opacity="0.4" d="M10.4169 12.8179H4.87842" stroke="#222222" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M18.7014 10.6409L20.8783 12.8179L18.7014 14.9948" stroke="#222222" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
-<path opacity="0.4" d="M15.3398 12.8179H20.8783" stroke="#222222" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M14.9723 17.8231L12.7954 20L10.6185 17.8231" stroke="#222222" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path opacity="0.4" d="M12.7954 14.4615V20" stroke="#222222" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10.6185 6.17692L12.7954 4L14.9723 6.17692" stroke="#222222" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path opacity="0.4" d="M12.7954 9.53846V4" stroke="#222222" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6.97233 14.1769L4.79541 12L6.97233 9.82306" stroke="#222222" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path opacity="0.4" d="M10.3339 12H4.79541" stroke="#222222" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18.6185 9.82306L20.7954 12L18.6185 14.1769" stroke="#222222" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path opacity="0.4" d="M15.2569 12H20.7954" stroke="#222222" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
